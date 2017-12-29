@@ -1,0 +1,69 @@
+.brand {
+	background-image: url('son_of_a_flag.png');
+	background-position: 10px 15px;	
+	background-repeat: no-repeat;
+}
+
+.wee-version {
+	font-size: 80%;
+	text-decoration: none;
+	float: left;
+	color: white;
+	position: relative;
+	left: -105px;
+	top: 28px;
+}
+
+
+.navbar .brand {
+    padding: 14px 100px 16px;
+}
+
+#homelink {
+	background-image: url('avatar_18px.png');
+	background-position: 132px 16px;	
+	background-repeat: no-repeat;
+	width: 132px;
+}
+
+
+.subhead > div:first-child {
+    min-height: 0px;
+}
+
+
+section {
+    margin-top: 10px;
+    padding-top: 20px;
+}
+
+.input-medium {
+    width: 417px;
+}
+
+#actionZone {
+    height: 170px;
+}
+
+#errorOutput {
+    color: red;
+}
+
+#noCanvas {
+    color: red;
+}
+
+img {
+    vertical-align: baseline;
+}
+
+hr {
+    border: 0;
+    border-bottom: 1px dashed #E4E4E4;
+    background: #CACACA;
+}
+
+.specialFooter {
+	font-family: 'Telex', sans-serif;
+}
+

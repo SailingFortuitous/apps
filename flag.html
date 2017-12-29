@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Son of a Flag!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Have you ever wanted to spell things with nautical signal flags? Wow! Now you can! Just type in words and have them spelled as flags (very small flags).">
+    <meta name="author" content="Sailing Fortuitous">
+
+    <!--[if lt IE 9]>
+      <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	<link rel="stylesheet" href="bootstrap-master/docs/assets/css/bootstrap.css">
+	<link rel="stylesheet" href="bootstrap-master/docs/assets/css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" href="bootstrap-master/docs/assets/css/bootswatch.css">
+    <link rel="stylesheet" href="local_flag.css">
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <!-- Send the images to the browser immediately so that it can show them faster -->
+  <script>
+
+	var images = new Array()
+	function preload() {
+		for (i = 0; i < preload.arguments.length; i++) {
+			images[i] = new Image()
+			images[i].src = preload.arguments[i]
+		}
+	}
+	preload(
+		"https://sailingfortuitous.com/sites/default/files/alpha/A.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/B.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/C.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/D.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/E.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/F.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/G.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/H.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/I.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/J.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/K.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/L.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/M.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/N.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/O.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/P.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/Q.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/R.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/S.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/T.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/U.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/V.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/W.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/X.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/Y.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/Z.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/0.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/1.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/2.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/3.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/4.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/5.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/6.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/7.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/8.png",
+		"https://sailingfortuitous.com/sites/default/files/alpha/9.png"
+	)
+
+  </script>
+
+  <!-- Set the focus to the text box, both on page load and after pressing button -->
+  <script>
+	$(document).ready(function() {
+	  $("#rawUserInput").focus();
+	});
+
+    $(function() {
+      $("#submitButton").on('click', function() {
+        $('#rawUserInput').focus();
+	  });
+	});
+  </script>
+
+  <!-- Make the Flags -->
+  <script>
+    function makeFlag()
+    {
+		document.getElementById('flagCanvas').innerHTML = "";  		  // clears the previous div
+
+		var c=document.getElementById("flagCanvas");
+		var ctx=c.getContext("2d");
+
+		ctx.clearRect(0,0,flagCanvas.width,flagCanvas.height);        //clears the previous canvas
+
+        var nameElement = document.getElementById("rawUserInput");    // grab raw imput and assign it to a variable
+		var randoCap = nameElement.value;                             // get values of from the element
+        var userInput = randoCap.toUpperCase();                       // make all characters upper case
+
+		var letterArray = [];
+        for (var letters=0;letters<userInput.length;letters++)
+		{
+			if (userInput.length < 53)
+				{
+				document.getElementById("errorOutput").innerHTML = "";
+				letterArray.push(userInput[letters]);
+				}
+			else
+				{
+				document.getElementById("errorOutput").innerHTML = "";
+				document.getElementById("errorOutput").innerHTML += "Please limit input to 52 characters.";
+				letterArray.push(userInput[letters]);
+				break;
+				}
+		}
+		var outputArray = [];
+
+        for (var outputCount=0;outputCount<userInput.length;outputCount++)
+		{
+			if ((letterArray[outputCount].charCodeAt() > 64 && letterArray[outputCount].charCodeAt() < 91) || (letterArray[outputCount].charCodeAt() > 47 && letterArray[outputCount].charCodeAt() < 58))
+				{
+				var img=document.getElementById('flagCanvas');
+				var let = letterArray[outputCount];
+				img.innerHTML += '<img id="image-' + let +'" src="https://sailingfortuitous.com/sites/default/files/alpha/' + let + '.png" alt="" />';
+				ctx.drawImage(document.getElementById("image-" + let),outputCount*15+5,10);
+				}
+			else
+				{
+				document.getElementById("flagCanvas").innerHTML += "&nbsp;&nbsp;";
+				}
+		}
+
+		var dataURL = c.toDataURL();
+		document.getElementById('canvasImg').src = dataURL;
+	}
+  </script>
+
+  <!-- Clear the Flags -->
+  <script>
+	$(document).ready(function () {
+		clearFlag();
+	});
+
+	function clearFlag() {
+		for (i = 0; i < document.forms.length; i++) {
+			document.forms[i].reset();
+			}
+		document.getElementById('canvasImg').src = "";
+		document.getElementById("errorOutput").innerHTML = "";
+	}
+  </script>
+
+  <!-- Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-20022574-1', 'sailingfortuitous.com');
+  ga('send', 'pageview');
+
+  </script>
+
+</head>
+
+<body class="preview" id="top" data-target=".subnav" data-offset="80">
+
+
+
+  <!-- Navbar
+    ================================================== -->
+ <div class="navbar navbar-fixed-top">
+   <div class="navbar-inner">
+     <div class="container">
+       <a class="brand" href="https://sailingfortuitous.com">Son of a Flag!</a>
+       <div class="nav-collapse collapse" id="main-menu">
+        <ul class="nav pull-right" id="main-menu-right">
+          <li><a rel="tooltip" href="https://sailingfortuitous.com/apps/jibcalc.html" title="Jib Calculator">Jib Calculator</a></li>
+		  <li><a rel="tooltip" href="https://sailingfortuitous.com/apps/flag.html" title="Son of a Flag">Son of a Flag</a></li>
+		  <li><a id="homelink" rel="tooltip" href="https://sailingfortuitous.com" title="Sailing Fortuitous">Sailing Fortuitous</a></li>
+        </ul>
+       </div>
+     </div>
+   </div>
+ </div>
+
+<div class="container">
+
+
+<!-- Masthead
+================================================== -->
+<header class="jumbotron subhead" id="overview">
+  <div class="row">
+    <div class="span12">
+      <h1>Spell Things with Flags</h1>
+      <p class="lead">&nbsp;&nbsp;Very small flags.</p>
+    </div>
+  </div>
+</header>
+
+
+<!-- Action Zone
+================================================== -->
+<section id="actionZone">
+
+  <div class="row">
+  <div class="span10 offset1">
+
+      <form class="well form-search">
+		<input id="rawUserInput" class="input-medium search-query" type="text" onKeyUp="makeFlag();" autocomplete="off" >
+        <input class="btn btn-warning" id="submitButton" type="button" value="Clear" onClick="clearFlag();"><br>
+		<p class="help-block">&nbsp;&nbsp;Type something to translate it into signal flags.</p>
+      </form>
+
+    </div>
+  </div>
+
+    <div class="row">
+		<div class="span10 offset1">
+			<canvas id="flagCanvas" width="100%" height="30" style="display:none;"></canvas>
+			<canvas id="noCanvas" width="780" height="1" >Your browser is incompatible with Son of a Flag.<br>Please upgrade to a modern browser.</canvas>
+			<img id="canvasImg" />
+			<div id="errorOutput"></div>
+		</div>
+	</div>
+
+</section>
+
+
+
+
+     <!-- Footer
+      ================================================== -->
+	<br>
+
+      <footer id="footer">
+
+	  	<div class="row">
+			<div class="span12"><h4>Q & A</h4></div>
+		</div>
+
+		<div class="row">
+			<div class="span12"><h5>What is this flag nonsense?</h5></div>
+		</div>
+		<div class="row">
+			<div class="span12"><p>They're from the <a href="https://en.wikipedia.org/wiki/International_Code_of_Signals" alt="ICS" target="_blank" >International Code of Signals</a> and can be used for communication between boats. They represent letters of the alphabet and also sometimes have a specific meaning (like when you enter foreign waters, you fly the <em>Quebec</em> <img src="https://sailingfortuitous.com/sites/default/files/alpha/Q.png" alt="Q"> to indicate that you need to clear customs). Certain combinations of flags have additional meanings, many of which are rather grim. Like <em>India Tango</em> <img src="https://sailingfortuitous.com/sites/default/files/alpha/I.png" alt="I"><img src="https://sailingfortuitous.com/sites/default/files/alpha/T.png" alt="T" style="padding-left:4px"> apparently means "I am on fire." I can just see myself sitting calmly at the helm, asking my navigatrix to grab the flags to indicate my state of conflagration. Anyway, they're rarely used by recreational sailors, except for <em>Quebec</em> and possibly <em>Alpha</em>, which means "diver down" everywhere except in America and on <a href="https://www.amazon.com/Diver-Down-Van-Halen/dp/B00004Y6O6" alt="Diver Down" target="_blank" >Van Halen albums</a>.</p></div>
+		</div>
+
+		<div class="row">
+			<div class="span12"><h5>Why are these flags so small?</h5></div>
+		</div>
+		<div class="row">
+			<div class="span12"><p>I made them to fit inline with small text on <a href="https://sailingfortuitous.com" alt="Sailing Fortuitous" target="_blank" >my boat log</a>, but most of them weren't being used. I thought it would be fun to do something with them. See their meanings <a href="https://sailingfortuitous.com/signal_flags" alt="Signal Flags" target="_blank" >here</a>.</p></div>
+		</div>
+
+		<div class="row">
+			<div class="span12"><h5>I'm high tech and stuff, and noticed that you are using <a href="https://twitter.github.com/bootstrap/" alt="Bootstrap" target="_blank" >Bootstrap</a>. Isn't that overkill?</h5></div>
+		</div>
+		<div class="row">
+			<div class="span12"><p>Yeah, probably. Matt made me do it.</p></div>
+		</div>
+
+		<div class="row">
+			<div class="span12"><h5>Why is this called "Son of a Flag?"</h5></div>
+		</div>
+		<div class="row">
+			<div class="span12"><p>My wife's grandmother used to say it when censoring herself from using the b-word. I wanted to call it "Self Flag-ellation" but that's gross and difficult to misspell properly for the best effect.</p></div>
+		</div>
+
+		<hr>
+		<div class="row">
+			<div class="span12 specialFooter" ><p>Son of a Flag <a href="https://sailingfortuitous.com/apps/changelog_flag.txt" target="blank">v1.1.1</a></p></div>
+		</div>
+		<div class="row">
+			<div class="span12 specialFooter"><a href="https://sailingfortuitous.com"><img src="chip.png" alt="chip" style="margin: 0 0 -1px 0;"/>&nbsp;https://sailingfortuitous.com</a></div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="span12">&nbsp;</div>
+		</div>
+
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- Apps Pages -->
+		<ins class="adsbygoogle"
+			 style="display:inline-block;width:728px;height:90px"
+			 data-ad-client="ca-pub-8821618106836704"
+			 data-ad-slot="2861687917"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+
+      </footer>
+
+</div><!-- /container -->
+
+</body>
+</html>

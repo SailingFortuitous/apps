@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<title>Jib Overlap Calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Use the luff, leech, foot, and J measurements to calculate your headsail overlap">
+    <meta name="author" content="Sailing Fortuitous">
+	
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	<link rel="stylesheet" href="bootstrap-master/docs/assets/css/bootstrap.css">
+	<link rel="stylesheet" href="bootstrap-master/docs/assets/css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" href="bootstrap-master/docs/assets/css/bootswatch.css">
+    <link rel="stylesheet" href="local_jib.css">
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+  <!-- Set the focus to the first text box, both on page load and after pressing reset -->
+  <script>
+	$(document).ready(function() {
+	  $("input#input-a.input-small.search-query").focus();
+	});
+
+    $(function() {
+      $("button.btn.btn-reset").on('click', function() {
+        $("input#input-a.input-small.search-query").focus();
+	  });
+	});
+  </script>
+	
+  <script type="text/javascript">
+	function calcHeron(){
+		document.getElementById('sail-area').innerHTML = '';
+		var a = new Number(document.getElementById('input-a').value);
+		var b = new Number(document.getElementById('input-b').value);
+		var c = new Number(document.getElementById('input-c').value);
+		var j = new Number(document.getElementById('input-j').value);
+		var abc = a+b+c;
+		var heron = Math.pow((abc)/2*((abc)/2-a) * ((abc)/2-b) * ((abc)/2-c),0.5);
+		if(isNaN(a) || isNaN(b) || isNaN(c)|| isNaN(j)){
+			alert('One or more inputs are not valid numbers');
+		} else {
+			document.getElementById('sail-area').innerHTML = Math.round(heron * 100) / 100;
+			document.getElementById('luff-perp').innerHTML = Math.round((heron/(0.5 * a)) * 100) / 100;
+			document.getElementById('overlap').innerHTML = Math.round(((heron/(0.5 * a)) / j * 100) * 100) / 100;
+		}
+		if(isNaN(Math.round(heron * 100) / 100)){
+			alert('Check your numbers. The luff/leech/foot measurements you have entered do not fulfill the Triangle Inequality Theorem')
+		}
+	}
+	window.onload=function(){
+		document.getElementById('btnCalc').onclick = calcHeron;
+	}
+  </script>
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-20022574-1', 'sailingfortuitous.com');
+	  ga('send', 'pageview');
+
+	</script>
+ 
+</head>
+
+<body class="preview" id="top" data-target=".subnav" data-offset="80">
+
+
+
+  <!-- Navbar
+    ================================================== -->
+ <div class="navbar navbar-fixed-top">
+   <div class="navbar-inner">
+     <div class="container">
+       <a class="brand" href="http://sailingfortuitous.com">Jib Overlap Calculator</a>
+       <div class="nav-collapse collapse" id="main-menu">
+        <ul class="nav pull-right" id="main-menu-right">
+          <li><a rel="tooltip" href="http://sailingfortuitous.com/apps/jibcalc.html" >Jib Calculator</a></li>
+		  <li><a rel="tooltip" href="http://sailingfortuitous.com/apps/flag.html" >Son of a Flag</a></li>
+		  <li><a id="homelink" rel="tooltip" href="http://sailingfortuitous.com" >Sailing Fortuitous</a></li>
+        </ul>
+       </div>
+     </div>
+   </div>
+ </div>
+
+<div class="container">
+
+
+<!-- Masthead
+================================================== -->
+<header class="jumbotron subhead" id="overview">
+  <div class="row">
+    <div class="span12">
+      <h1>The Cut of Your Jib</h1>
+      <p class="lead">&nbsp;&nbsp;Calculate your headsail overlap!</p>
+    </div>
+  </div>
+</header>
+
+
+<!-- Action Zone
+================================================== -->
+<section id="actionZone">
+
+	<div class="row">
+		<div class="span8">Enter your sail and "J" measurements below and press the "Calculate" button to find your overlap.
+		</div>
+	</div>	
+    <div class="row">
+		<div class="span12">&nbsp;</div>
+	</div>
+	<div class="row">
+		<div class="span8">Any unit of measure is ok as long as it's consistent and just a number. So meters, inches, or feet will work, but you may need to use "decimal feet" to keep it precise, e.g., 35.5 will work, but 35' 6" will not.
+		</div>
+	</div>	
+    <div class="row">
+		<div class="span12">&nbsp;</div>
+    </div>	
+
+  <div class="work-area">	
+  <form class="form-horizontal">
+	  <div class="control-group">
+		<label class="control-label" for="Luff">Luff</label>
+		<div class="controls">
+ 			<input class="input-small search-query" type=text id="input-a" value="" />
+		</div>
+	  </div>
+	  <div class="control-group">
+		<label class="control-label" for="Leech">Leech</label>
+		<div class="controls">
+ 			<input class="input-small search-query" type=text id="input-b" value="" />
+		</div>
+	  </div>
+	  <div class="control-group">
+		<label class="control-label" for="Foot">Foot</label>
+		<div class="controls">
+ 			<input class="input-small search-query" type=text id="input-c" value="" />
+		</div>
+	  </div>	  
+	  <div class="control-group">
+		<label class="control-label" for="J">J</label>
+		<div class="controls">
+ 			<input class="input-small search-query" type=text id="input-j" value="" />
+		</div>
+	  </div>	  
+	  <div class="control-group">
+		<div class="controls">
+ 			<button type="button" class="btn btn-warning" id="btnCalc">Calculate</button>
+			<button type="button" class="btn btn-reset" onClick="this.form.reset()">Reset</button>
+		</div>
+	  </div>		  
+  </form>
+  
+ 
+ 
+  <table class="span3 offset1 results-table">
+  <tbody>
+    <tr>
+      <th>Results</th>
+	  <th>&nbsp;</th>
+    </tr>
+    <tr>
+      <td>Sail Area:</td>
+      <td><div id="sail-area"></div></td>
+    </tr>
+    <tr>
+      <td>Luff Perpendicular:</td>
+      <td><div id="luff-perp"></div></td>
+    </tr>
+    <tr>
+      <td>Overlap(%):</td>
+      <td><div id="overlap"></div></td>
+    </tr>
+	</tbody>
+</table>
+ 
+  
+    <div class="row">
+		<div class="span12">&nbsp;</div>
+	</div>	
+
+	</div>
+</section>
+
+
+
+
+     <!-- Footer
+      ================================================== -->
+	<hr>
+
+      <footer id="footer">
+
+		<div class="row">
+			<div class="span12"><h4>Q & A</h4></div>
+		</div>	
+	 
+		<div class="row">
+			<div class="span12"><h5>What is this?</h5></div>
+		</div>	
+		<div class="row">
+			<div class="span12"><p>There are different sized headsails. Sometimes, they're numbered (like a "Number 3" jib is smaller than a "Number 2") but we often refer to their relative size as a percentage of the luff perpendicular to the "J" measurement, or how much overlap you have. There are infinite variations, but an example of how these relate might be:</p></div>
+		</div>	
+	 
+		<table class="span5 offset1">
+		  <tbody>
+			<tr>
+			  <td>No. 1</td>
+			  <td>155%</td>
+			  <td>Light Wind Genoa</td>
+			<tr>
+			  <td>No. 2</td>
+			  <td>135%</td>
+			  <td>Genoa</td>
+			</tr>
+			<tr>
+			  <td>No. 3</td>
+			  <td>100%</td>
+			  <td>Working Jib</td>
+			</tr>
+			<tr>
+			  <td>No. 4</td>
+			  <td><80%</td>
+			  <td>Storm Jib</td>
+			</tr>
+			</tbody>
+		</table>
+		<div class="row">
+			<div class="span12"><p>I bought a used headsail and had the external measurements, but not the luff perpendicular (and I didn't have the sail on hand to measure it), so I did these calculations by hand. I thought it might be helpful to have an app for that.</p></div>
+		</div>	
+				
+		<div class="row">
+			<div class="span12"><h5>Where do I find these measurements?</h5></div>
+		</div>	
+		<div class="row">
+			<div class="span12"><p>Oh, you know...around. <a href="http://sailboatdata.com" target="_blank">SailboatData.com</a> has a lot of info, including a lot of J values. Or just Google and piece things together along with your own measurements.</p></div>
+		</div>	
+
+		<div class="row">
+			<div class="span12"><h5>This seems unnecessarily complicated.</h5></div>
+		</div>	
+		<div class="row">
+			<div class="span12"><p>Yeah, c'est la sailing. If you get stuck, here's a <a href="http://sailingfortuitous.com/apps/crazy_rigging.png" >handy rigging guide</a>.</p></div>
+		</div>	
+		
+		<div class="row">
+			<div class="span12"><h5>Are these calculations accurate?</h5></div>
+		</div>	
+		<div class="row">
+			<div class="span12"><p>While there is certainly no warranty expressed or implied, I think it's probably close. It uses <a href="http://mathworld.wolfram.com/HeronsFormula.html" target="_blank">Heron's Formula</a> to calculate the area of the sail, then uses the basic formula for area of a triangle to calculate the luff perpendicular: area = &frac12; base &times; height, solving for height (LP) where the "base" is the luff. The LP is then divided by the J measurement and multiplied by 100 to make it a tidy percent.</p></div>
+			<div class="span12"><p>Special thanks to James Dildine's <a href="http://mste.illinois.edu/dildine/heron/triarea.html" target="_blank">Triangle Explorations</a> for reminding me how this worked and providing some hints on how to do the math in JavaScript. Please <a href="http://sailingfortuitous.com/contact" target="_blank">contact me</a> if you think this can be improved.</p></div>
+		</div>	
+
+		<hr>
+		<div class="row">
+			<div class="span12 specialFooter" ><p>Jib Overlap Calculator <a href="http://sailingfortuitous.com/apps/changelog_jibcalc.txt" target="blank">v1.5.1</a></p></div>
+		</div>	
+		<div class="row">
+			<div class="span12 specialFooter"><a href="http://sailingfortuitous.com"><img src="chip.png" alt="chip" style="margin: 0 0 -1px 0;"/>&nbsp;http://sailingfortuitous.com</a></div>
+		</div>				
+		<hr>		
+		<div class="row">
+			<div class="span12">&nbsp;</div>
+		</div>		
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- Apps Pages -->
+		<ins class="adsbygoogle"
+			 style="display:inline-block;width:728px;height:90px"
+			 data-ad-client="ca-pub-8821618106836704"
+			 data-ad-slot="2861687917"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>			  
+		
+      </footer>
+
+</div><!-- /container -->
+
+</body>
+</html>

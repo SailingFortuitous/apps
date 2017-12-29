@@ -1,0 +1,100 @@
+.brand {
+	background-image: url('cut_of_your_jib.png');
+	background-position: 10px 15px;	
+	background-repeat: no-repeat;
+}
+
+
+.navbar .brand {
+	padding: 14px 100px 16px;
+}
+
+
+#homelink {
+	background-image: url('avatar_18px.png');
+	background-position: 132px 16px;	
+	background-repeat: no-repeat;
+	width: 132px;
+}
+
+
+.subhead > div:first-child {
+	min-height: 0px;
+}
+
+
+section {
+	margin-top: 1px;
+	padding-top: 2px;
+}
+
+.input-medium {
+	width: 417px;
+}
+
+#errorOutput {
+	color: red;
+}
+
+#sail-input {
+	color: red;
+}
+
+img {
+	vertical-align: baseline;
+}
+
+hr {
+    border: 0;
+    border-bottom: 1px dashed #E4E4E4;
+    background: #CACACA;
+}
+
+.results-table table{
+	table-layout:fixed;
+}
+
+.results-table td {
+	padding:3px;
+	background-color: #E5E5E5;
+}
+
+.results-table th {
+	text-align:left;
+	font-weight:normal;
+	padding:3px;
+}
+
+td {
+	padding:3px;
+}
+
+th {
+	text-align:left;
+	font-weight:normal;
+	padding:3px;
+}
+
+
+.work-area {
+	background-image: url('jib_diagram.png');
+	background-position: 450px;	
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+#sail-area{
+	font-weight: bold;
+}
+
+#luff-perp{
+	font-weight: bold;
+}
+
+#overlap{
+	font-weight: bold;
+}
+
+.specialFooter {
+	font-family: 'Telex', sans-serif;
+}

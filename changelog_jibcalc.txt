@@ -1,0 +1,77 @@
+commit 3363865a56cf98d07120fd1631d8cc39e175500f
+Author: chip <chip@sailingfortuitous.com>
+Date:   Wed Aug 19 19:23:41 2015 -0400
+
+    Add ads to Jib Calc and Flag. Updated version numbers.
+
+commit 2b736f9195f45fa20bb445d16bbbbe5135092a26
+Author: chip 
+Date:   Sat Feb 8 13:35:53 2014 -0500
+
+    Made footer font match header font.
+
+commit 9be1c85f303b5d4edb531c5f8cca38b33c3364f1
+Author: chip 
+Date:   Sat Feb 8 03:22:29 2014 -0500
+
+    Removed extra space above first paragraph.
+
+commit e06be2f6d18a5d5a90b29fcb49e928bacb2c7040
+Author: chip
+Date:   Sat Feb 8 03:13:58 2014 -0500
+
+    Minor: moved flag image in footer inside the link.
+
+commit e7d5830ddb85002c5dd922b78ad01a2f0f12a81f
+Author: chip
+Date:   Sat Feb 8 03:11:24 2014 -0500
+
+    Changed footers of both Flag and Jib to include version and links to changelogs.
+
+
+commit 9e4e6c7e0748135154c1470b5ed2b3561e35126f
+Author: chip 
+Date:   Sat Feb 8 02:16:38 2014 -0500
+
+    Simplified math using variables.
+	
+	@@ -24,14 +37,16 @@
+                var b = new Number(document.getElementById('input-b').value);
+                var c = new Number(document.getElementById('input-c').value);
+                var j = new Number(document.getElementById('input-j').value);
++               var abc = a+b+c;
++               var heron = Math.pow((abc)/2*((abc)/2-a) * ((abc)/2-b) * ((abc)/2-c),0.5);
+                if(isNaN(a) || isNaN(b) || isNaN(c)|| isNaN(j)){
+                        alert('One or more inputs are not valid numbers');
+                } else {
+-                       document.getElementById('sail-area').innerHTML = Math.round((Math.pow((a+b+c)/2*((a+b+c)/2-a) * ((a+b+c)/2-b) * ((a+b+c)/2-c),0.5)) * 100) / 100;
+-                       document.getElementById('luff-perp').innerHTML = Math.round(((Math.pow((a+b+c)/2*((a+b+c)/2-a) * ((a+b+c)/2-b) * ((a+b+c)/2-c),0.5))/(0.5 * a)) * 100) / 100;
+-                       document.getElementById('overlap').innerHTML = Math.round((((Math.pow((a+b+c)/2*((a+b+c)/2-a) * ((a+b+c)/2-b) * ((a+b+c)/2-c),0.5))/(0.5 * a)) / j * 100) * 100) / 100;
++                       document.getElementById('sail-area').innerHTML = Math.round(heron * 100) / 100;
++                       document.getElementById('luff-perp').innerHTML = Math.round((heron/(0.5 * a)) * 100) / 100;
++                       document.getElementById('overlap').innerHTML = Math.round(((heron/(0.5 * a)) / j * 100) * 100) / 100;
+                }
+-               if(isNaN(Math.round((Math.pow((a+b+c)/2*((a+b+c)/2-a) * ((a+b+c)/2-b) * ((a+b+c)/2-c),0.5)) * 100) / 100)){
++               if(isNaN(Math.round(heron * 100) / 100)){
+                        alert('Check your numbers. The luff/leech/foot measurements you have entered do not fulfill the Triangle Inequality Theorem')
+                }
+        }
+@@ -142,7 +157,7 @@
+
+commit 6d6bfc386c4f3967b277f829170c88cd02a2d372
+Author: chip 
+Date:   Sat Feb 8 02:05:12 2014 -0500
+
+    Set focus to first text box, both on page load and after reset.
+
+commit 315ea53b58d0fe5cc90347b1af71bc04a7686e0b
+Author: chip 
+Date:   Sat Feb 8 01:56:43 2014 -0500
+
+    Added images to repo.
+
+commit 87f768a28ebf11d5b8286f3f06d8a3bf6f98bb71
+Author: chip 
+Date:   Sat Feb 8 01:54:53 2014 -0500
+
+    Initialized.

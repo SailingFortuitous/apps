@@ -1,0 +1,36 @@
+commit 3363865a56cf98d07120fd1631d8cc39e175500f
+Author: chip <chip@sailingfortuitous.com>
+Date:   Wed Aug 19 19:23:41 2015 -0400
+
+    Add ads to Jib Calc and Flag. Updated version numbers.
+
+	commit 2b736f9195f45fa20bb445d16bbbbe5135092a26
+Author: chip
+Date:   Sat Feb 8 13:35:53 2014 -0500
+
+    Made footer font match header font.
+
+commit 9be1c85f303b5d4edb531c5f8cca38b33c3364f1
+Author: chip
+Date:   Sat Feb 8 03:22:29 2014 -0500
+
+    Removed extra space above first paragraph.
+
+commit e06be2f6d18a5d5a90b29fcb49e928bacb2c7040
+Author: chip
+Date:   Sat Feb 8 03:13:58 2014 -0500
+
+    Minor: moved flag image in footer inside the link.
+
+commit e7d5830ddb85002c5dd922b78ad01a2f0f12a81f
+Author: chip
+Date:   Sat Feb 8 03:11:24 2014 -0500
+
+    Changed footers of both Flag and Jib to include version and links to changelogs.
+
+
+commit 87f768a28ebf11d5b8286f3f06d8a3bf6f98bb71
+Author: chip
+Date:   Sat Feb 8 01:54:53 2014 -0500
+
+    initialized
