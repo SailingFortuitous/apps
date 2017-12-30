@@ -1,6 +1,6 @@
 .brand {
 	background-image: url('son_of_a_flag.png');
-	background-position: 10px 15px;	
+	background-position: 10px 15px;
 	background-repeat: no-repeat;
 }
 
@@ -21,7 +21,7 @@
 
 #homelink {
 	background-image: url('avatar_18px.png');
-	background-position: 132px 16px;	
+	background-position: 132px 16px;
 	background-repeat: no-repeat;
 	width: 132px;
 }
@@ -42,7 +42,7 @@ section {
 }
 
 #actionZone {
-    height: 170px;
+/*    height: 170px;*/
 }
 
 #errorOutput {
@@ -66,4 +66,3 @@ hr {
 .specialFooter {
 	font-family: 'Telex', sans-serif;
 }
-
