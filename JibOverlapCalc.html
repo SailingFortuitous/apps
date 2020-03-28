@@ -1,0 +1,97 @@
+<!-- Set Initial Focus -->
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    document.getElementById('input-a').focus();
+  });
+</script>
+
+<!-- Jib Calc JS -->
+<script type="text/javascript">
+  function calcHeron(){
+    document.getElementById('sail-area').innerHTML = '';
+    var a = new Number(document.getElementById('input-a').value);
+    var b = new Number(document.getElementById('input-b').value);
+    var c = new Number(document.getElementById('input-c').value);
+    var j = new Number(document.getElementById('input-j').value);
+    var abc = a+b+c;
+    var heron = Math.pow((abc)/2*((abc)/2-a) * ((abc)/2-b) * ((abc)/2-c),0.5);
+    if(isNaN(a) || isNaN(b) || isNaN(c)|| isNaN(j)){
+      alert('One or more inputs are not valid numbers');
+    } else {
+      document.getElementById('sail-area').innerHTML = Math.round(heron * 100) / 100;
+      document.getElementById('luff-perp').innerHTML = Math.round((heron/(0.5 * a)) * 100) / 100;
+      document.getElementById('overlap').innerHTML = Math.round(((heron/(0.5 * a)) / j * 100) * 100) / 100;
+    }
+    if(isNaN(Math.round(heron * 100) / 100)){
+      alert('Check your numbers. The luff/leech/foot measurements you have entered do not fulfill the Triangle Inequality Theorem')
+    }
+  }
+  window.onload=function(){
+    document.getElementById('btnCalc').onclick = calcHeron;
+  }
+</script>
+
+<!-- HTML -->
+<section id="actionZone">
+  <div class="work-area">
+    <form class="form-horizontal">
+      <div class="control-group">
+        <label class="control-label" for="Luff">Luff</label>
+        <div class="controls">
+          <input class="input-small search-query" type=text id="input-a" value="" />
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="Leech">Leech</label>
+        <div class="controls">
+          <input class="input-small search-query" type=text id="input-b" value="" />
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="Foot">Foot</label>
+        <div class="controls">
+          <input class="input-small search-query" type=text id="input-c" value="" />
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="J">J</label>
+        <div class="controls">
+          <input class="input-small search-query" type=text id="input-j" value="" />
+        </div>
+      </div>
+      <div>
+        <span>&nbsp;</span>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <button type="button" class="btn btn-warning" id="btnCalc">Calculate</button>
+          <button type="button" class="btn" id="jibResetBtn" onClick="this.form.reset();document.getElementById('input-a').focus();">Reset</button>
+        </div>
+      </div>
+      <div>
+        <span>&nbsp;</span>
+      </div>
+    </form>
+
+    <table>
+      <tbody>
+        <tr>
+          <th>Results</th>
+          <th>&nbsp;</th>
+        </tr>
+        <tr>
+          <td>Sail Area:</td>
+          <td class="has-text-align-right" data-align="right"><div id="sail-area"></div></td>
+        </tr>
+        <tr>
+          <td>Luff Perpendicular:</td>
+          <td class="has-text-align-right" data-align="right"><div id="luff-perp"></div></td>
+        </tr>
+        <tr>
+          <td>Overlap(%):</td>
+          <td class="has-text-align-right" data-align="right"><div id="overlap"></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
