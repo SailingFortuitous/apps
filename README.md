@@ -11,7 +11,7 @@ There are currently two apps in this repo:
 * ~~Son of a Flag: Uses `canvas` to convert text to signal flags~~
   * NOTE: This flag speller has been removed from sailingfortuitous.com
   * New new flag speller is made in WordPress, available at https://sailingfortuitous.com/spell-things-with-flags/
-  * The only remaining relevant files relating to the flag speller are `flag-standalone.html,` which contains the stripped-down code (jQuery, Bootstrap, and lots of HTML removed), and the folders of the flag images. The contents of the HTML file is inserted into a block in the WP page to power the flag speller, along with other blocks that add the flavor.
+  * The only remaining relevant files relating to the flag speller are `flag-standalone.html`, which contains the stripped-down code (jQuery, Bootstrap, and lots of HTML removed), and the folders of the flag images. The contents of the HTML file is inserted into a block in the WP page to power the flag speller, along with other blocks that add the flavor.
 
 ## Built With
 * [bootstrap](https://github.com/twbs/bootstrap) - HTML, CSS, and JavaScript framework
