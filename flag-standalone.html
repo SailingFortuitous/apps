@@ -1,0 +1,199 @@
+<!-- Send the images to the browser immediately so that it can show them faster -->
+<script>
+
+  var images = new Array()
+  function preload() {
+    for (i = 0; i < preload.arguments.length; i++) {
+      images[i] = new Image()
+      images[i].src = preload.arguments[i]
+    }
+  }
+  preload(
+  "https://sailingfortuitous.com/flags/16/_.png",
+  "https://sailingfortuitous.com/flags/16/A.png",
+  "https://sailingfortuitous.com/flags/16/B.png",
+  "https://sailingfortuitous.com/flags/16/C.png",
+  "https://sailingfortuitous.com/flags/16/D.png",
+  "https://sailingfortuitous.com/flags/16/E.png",
+  "https://sailingfortuitous.com/flags/16/F.png",
+  "https://sailingfortuitous.com/flags/16/G.png",
+  "https://sailingfortuitous.com/flags/16/H.png",
+  "https://sailingfortuitous.com/flags/16/I.png",
+  "https://sailingfortuitous.com/flags/16/J.png",
+  "https://sailingfortuitous.com/flags/16/K.png",
+  "https://sailingfortuitous.com/flags/16/L.png",
+  "https://sailingfortuitous.com/flags/16/M.png",
+  "https://sailingfortuitous.com/flags/16/N.png",
+  "https://sailingfortuitous.com/flags/16/O.png",
+  "https://sailingfortuitous.com/flags/16/P.png",
+  "https://sailingfortuitous.com/flags/16/Q.png",
+  "https://sailingfortuitous.com/flags/16/R.png",
+  "https://sailingfortuitous.com/flags/16/S.png",
+  "https://sailingfortuitous.com/flags/16/T.png",
+  "https://sailingfortuitous.com/flags/16/U.png",
+  "https://sailingfortuitous.com/flags/16/V.png",
+  "https://sailingfortuitous.com/flags/16/W.png",
+  "https://sailingfortuitous.com/flags/16/X.png",
+  "https://sailingfortuitous.com/flags/16/Y.png",
+  "https://sailingfortuitous.com/flags/16/Z.png",
+  "https://sailingfortuitous.com/flags/16/0.png",
+  "https://sailingfortuitous.com/flags/16/1.png",
+  "https://sailingfortuitous.com/flags/16/2.png",
+  "https://sailingfortuitous.com/flags/16/3.png",
+  "https://sailingfortuitous.com/flags/16/4.png",
+  "https://sailingfortuitous.com/flags/16/5.png",
+  "https://sailingfortuitous.com/flags/16/6.png",
+  "https://sailingfortuitous.com/flags/16/7.png",
+  "https://sailingfortuitous.com/flags/16/8.png",
+  "https://sailingfortuitous.com/flags/16/9.png",
+  "https://sailingfortuitous.com/flags/32/_.png",
+  "https://sailingfortuitous.com/flags/32/A.png",
+  "https://sailingfortuitous.com/flags/32/B.png",
+  "https://sailingfortuitous.com/flags/32/C.png",
+  "https://sailingfortuitous.com/flags/32/D.png",
+  "https://sailingfortuitous.com/flags/32/E.png",
+  "https://sailingfortuitous.com/flags/32/F.png",
+  "https://sailingfortuitous.com/flags/32/G.png",
+  "https://sailingfortuitous.com/flags/32/H.png",
+  "https://sailingfortuitous.com/flags/32/I.png",
+  "https://sailingfortuitous.com/flags/32/J.png",
+  "https://sailingfortuitous.com/flags/32/K.png",
+  "https://sailingfortuitous.com/flags/32/L.png",
+  "https://sailingfortuitous.com/flags/32/M.png",
+  "https://sailingfortuitous.com/flags/32/N.png",
+  "https://sailingfortuitous.com/flags/32/O.png",
+  "https://sailingfortuitous.com/flags/32/P.png",
+  "https://sailingfortuitous.com/flags/32/Q.png",
+  "https://sailingfortuitous.com/flags/32/R.png",
+  "https://sailingfortuitous.com/flags/32/S.png",
+  "https://sailingfortuitous.com/flags/32/T.png",
+  "https://sailingfortuitous.com/flags/32/U.png",
+  "https://sailingfortuitous.com/flags/32/V.png",
+  "https://sailingfortuitous.com/flags/32/W.png",
+  "https://sailingfortuitous.com/flags/32/X.png",
+  "https://sailingfortuitous.com/flags/32/Y.png",
+  "https://sailingfortuitous.com/flags/32/Z.png",
+  "https://sailingfortuitous.com/flags/32/0.png",
+  "https://sailingfortuitous.com/flags/32/1.png",
+  "https://sailingfortuitous.com/flags/32/2.png",
+  "https://sailingfortuitous.com/flags/32/3.png",
+  "https://sailingfortuitous.com/flags/32/4.png",
+  "https://sailingfortuitous.com/flags/32/5.png",
+  "https://sailingfortuitous.com/flags/32/6.png",
+  "https://sailingfortuitous.com/flags/32/7.png",
+  "https://sailingfortuitous.com/flags/32/8.png",
+  "https://sailingfortuitous.com/flags/32/9.png"
+  )
+
+</script>
+
+
+<!-- Set the focus to the text box, both on page load and after pressing button -->
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    document.getElementById("rawUserInput").focus();
+  });
+</script>
+
+
+<!-- Make the Flags -->
+<script>
+  function makeFlag()
+  {
+    document.getElementById('flagCanvas').innerHTML = "";  		  // clears the previous div
+
+    var c=document.getElementById("flagCanvas");
+    var ctx=c.getContext("2d");
+
+    ctx.clearRect(0,0,flagCanvas.width,flagCanvas.height);        //clears the previous canvas
+
+    var nameElement = document.getElementById("rawUserInput");    // grab raw imput and assign it to a variable
+    var randoCap = nameElement.value;                             // get values of from the element
+    var userInput = randoCap.toUpperCase();                       // make all characters upper case
+
+    var letterArray = [];
+    for (var letters=0;letters<userInput.length;letters++)
+    {
+      if (userInput.length < 53)
+      {
+        document.getElementById("errorOutput").innerHTML = "";
+        letterArray.push(userInput[letters]);
+      }
+      else
+      {
+        document.getElementById("errorOutput").innerHTML = "";
+        document.getElementById("errorOutput").innerHTML += "Please limit input to 52 characters.";
+        letterArray.push(userInput[letters]);
+      }
+    }
+
+    // make output array
+    var outputArray = [];
+
+    for (var outputCount=0;outputCount<userInput.length;outputCount++)
+    {
+      if ((letterArray[outputCount].charCodeAt() > 64 && letterArray[outputCount].charCodeAt() < 91) || (letterArray[outputCount].charCodeAt() > 47 && letterArray[outputCount].charCodeAt() < 58))
+      {
+        var img=document.getElementById('flagCanvas');
+        var letterArrayOutput = letterArray[outputCount];
+
+        // get flag size variable from radio button
+        if (document.getElementById('radio32').checked) {
+          sizeSelector = 32;
+          outputSize = 44;
+        }
+        else if(document.getElementById('radio16').checked) {
+          sizeSelector = 16;
+          outputSize = 16;
+        }
+
+        // create image URL and draw it to the canvas
+        img.innerHTML += '<img id="image-' + letterArrayOutput +'" src="https://sailingfortuitous.com/flags/' + sizeSelector + '/' + letterArrayOutput + '.png" alt="" />';
+        ctx.drawImage(document.getElementById("image-" + letterArrayOutput),outputCount*outputSize,10);
+        }
+      else
+        {
+          document.getElementById("flagCanvas").innerHTML += "https://sailingfortuitous.com/apps/signal-flags/_.png";
+        }
+      }
+
+      var dataURL = c.toDataURL();
+      document.getElementById('canvasImg').src = dataURL;
+    }
+  </script>
+
+
+  <!-- Clear the Flags -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function(event)  {
+      clearFlag();
+    });
+
+    function clearFlag() {
+      for (i = 0; i < document.forms.length; i++) {
+        document.forms[i].reset();
+      }
+      document.getElementById('canvasImg').src = "https://sailingfortuitous.com/apps/signal-flags/_.png";
+      document.getElementById("errorOutput").innerHTML = "";
+    }
+  </script>
+
+
+  <!-- Action Zone
+  ================================================== -->
+  <section id="actionZone">
+
+    <form>
+      <body onload="makeFlag();">
+      <input class="input-small search-query" id="rawUserInput" type="text" onKeyUp="makeFlag()" data-lpignore="true" spellcheck="false" value=" ">
+      <button class="btn" id="submitButton" type="button"  onClick="clearFlag();document.getElementById('rawUserInput').focus();makeFlag();">Clear</button><br/>
+      <label><input type="radio" name="sizeSelectorRadio" id="radio32" checked onClick="makeFlag();document.getElementById('rawUserInput').focus();">&nbsp;Small</label><br/>
+      <label><input type="radio" name="sizeSelectorRadio" id="radio16" onClick="makeFlag();document.getElementById('rawUserInput').focus();">&nbsp;Very Small</label>
+    </form>
+
+    <canvas id="flagCanvas" width="780" height="50" style="display:none;"></canvas>
+    <canvas id="noCanvas" width="780" height="1" >Your browser is incompatible with Son of a Flag.<br>Please upgrade to a modern browser.</canvas>
+    <img id="canvasImg" />
+    <div id="errorOutput"></div>
+
+  </section>
