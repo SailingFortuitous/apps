@@ -179,14 +179,15 @@
   </script>
 
 
-  <!-- Action Zone
-  ================================================== -->
+  <!-- Action Zone -->
   <section id="actionZone">
 
     <form>
       <body onload="makeFlag();">
-      <input class="input-small search-query" id="rawUserInput" type="text" onKeyUp="makeFlag()" data-lpignore="true" spellcheck="false" value=" ">
-      <button class="btn" id="submitButton" type="button"  onClick="clearFlag();document.getElementById('rawUserInput').focus();makeFlag();">Clear</button><br/>
+      <div class="flex-input">
+        <input class="search-query" id="rawUserInput" type="text" onKeyUp="makeFlag()" data-lpignore="true" spellcheck="false" value=" ">
+        <button class="btn" id="submitButton" type="button"  onClick="clearFlag();document.getElementById('rawUserInput').focus();makeFlag();">Clear</button><br/>
+      </div>
       <label><input type="radio" name="sizeSelectorRadio" id="radio32" checked onClick="makeFlag();document.getElementById('rawUserInput').focus();">&nbsp;Small</label><br/>
       <label><input type="radio" name="sizeSelectorRadio" id="radio16" onClick="makeFlag();document.getElementById('rawUserInput').focus();">&nbsp;Very Small</label>
     </form>
